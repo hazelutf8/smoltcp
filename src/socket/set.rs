@@ -213,6 +213,7 @@ impl<'a, 'b: 'a, 'c: 'a + 'b> Iterator for IterMut<'a, 'b, 'c> {
     fn next(&mut self) -> Option<Self::Item> {
         while let Some(item_opt) = self.lower.next() {
             if let Some(item) = item_opt.as_mut() {
+                //hprintln!("next {:?}", item.socket);
                 return Some(SocketRef::new(&mut item.socket))
             }
         }

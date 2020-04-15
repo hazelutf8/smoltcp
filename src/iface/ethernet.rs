@@ -497,6 +497,7 @@ impl<'b, 'c, 'e, DeviceT> Interface<'b, 'c, 'e, DeviceT>
             #[cfg(feature = "proto-igmp")]
             self.igmp_egress(timestamp)?;
 
+            hprintln!("{} {} {}", timestamp.millis, processed_any as u8, emitted_any as u8);
             if processed_any || emitted_any {
                 readiness_may_have_changed = true;
             } else {
